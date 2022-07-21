@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https: //fonts.googleapis.com/css2? família= Poppins:ital,wght@0,700;1,600 & display=swap"
+        rel="stylesheet">
+    <title> Cronometro</title>
+</head>
+
+<body>
+    <img id="minha-imagem" src="./img/missao-3.png" alt="minha-imagem">
+    <section id="caixa-numeros">
+        <samp class="numeros" id="horas">00</samp>
+        <samp class="numeros">:</samp>
+        <samp class="numeros" id="minutos">00</samp>
+        <samp class="numeros">:</samp>
+        <samp class="numeros" id="segundos">00</samp>
+        <samp class="numeros">:</samp>
+        <samp class="numeros" id="mili">00</samp>
+    </section>
+
+    <section id="caixa-botoes">
+        <button class="meu-botao" id="Start">Start</button>
+        <button class="meu-botao" id="stop">Stop</button>
+        <button class="meu-botao" id="reset">Reset</button>
+
+    </section>
+</body>
+<Script>
+
+    let btnStart = document.getElementById("Start") // Essa variavel é meu button no HTML
+    let btnStop = document.getElementById("stop") // Essa variavel é meu button no HTML
+    let btnReset = document.getElementById("reset") // Essa variavel é meu button no HTML
+    let mili = document.getElementById("mili") //  Essas variáveis ​​é o milisegundo do HTML
+    let segundos = document.getElementById("segundos")  // Essa variavel é o segundos no HTML
+    let minutos = document.getElementById("minutos") // Essa variavel são os minutos no HTML
+    let horas = document.getElementById("horas")  // Essa variavel são as horas no HTML
+
+
+
+    let startTimer  // Essa variável, guarda o nosso times
+    let ms = "00"  // Essa variável guardará o milisegundos dentro do JavaScript
+    let seg = "00" // segundos
+    let min = "00" // minutos
+    let hr = "00" // horas
+
+
+
+ // Essa função dispara o timer, e é chamada quando eu clico no botão START
+    function start() {
+        startTimer = setInterval(function () {
+            ms++ // cade vez que eu passo aqui, eu somo +1
+
+
+
+            if (ms == 100) { // SÓ ENTRA AQUI QUANDO O MS FOR IGUAL A 100
+                seg++
+
+
+                if (seg < 10) {  // SÓ ENTRA AQUI QUANDO O SEG FOR MENOR QUE 10
+                    seg = "0" + seg // COLOCA UM ZERO NA FRENTE, MAS SÓ QUANDO O NUMERO FOR MENOR QUE 10
+                }
+                ms = 0
+            }
+
+            if (seg == 60) {  // SÓ ENTRA AQUI QUANDO O SEG FOR IGUAL A 60
+                min++
+
+                if (min < 10) {
+                    min = "0" + min
+                }
+
+                seg = 0
+
+            }
+
+            if (min == 60) {
+                hr++
+
+                if (hr < 10) {
+                    hr = "0" + hr
+                }
+                min = 0
+
+            }
+
+            btnStart.classList.add("ativo")
+            btnStop.classList.remove("ativo")
+            atualizaValor()
+        }, 10);// de quanto em quanto tempo será chamado em milisegundos
+    }
+
+    function stop() { // PARA O CRONOMETRO
+        clearInterval(startTimer) // PAUSA O SET INTERVAL 
+        btnStop.classList.add("ativo") // ADICIONA A CLASSE ATIVO AO BOTAO STOP
+        btnStart.classList.remove("ativo") // REMOVER UMA CLASSE ATIVO AO BOTAO START
+    }
+
+    function reset() {
+     
+        clearInterval(startTimer)
+        ms = "00"
+        seg = "00"
+        min = "00"
+        hr = "00"
+
+        btnStart.classList.remove("ativo")
+        btnStop.classList.remove("ativo")
+
+        atualizaValor()
+     }
+       
+    
+
+
+
+    function atualizaValor() { // PEGA OS VALORES DAS VARIAVEIS NO JAVASCRIPT E COLOCA NO HTML
+        mili.innerHTML = ms  // INNERHTML, INSERE UM VALOR EM UM ELEMENTO HTML
+        segundos.innerHTML = seg
+        minutos.innerHTML = min
+        horas.innerHTML = hr
+    }
+
+    btnStart.addEventListener("click", start)  // VIZINHO FOFOQUEIRO, SEMPER QUE HOUVER UM EVENTO DETERMINADO, NESSE CASO O CLICK, CHAMA UMA FUNCAO
+
+    btnStop.addEventListener("click", stop)
+
+    btnReset.addEventListener("click", reset)
+
+
+</Script>
+
+</html>

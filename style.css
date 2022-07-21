@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: black;
+}
+
+#minha-imagem {
+    height: 500px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+
+
+}
+
+#caixa-numeros {
+    display: block;
+   
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+    background: white;
+    border-radius: 6px;
+    padding-left: 25px;
+
+}
+
+.numeros {
+    text-align: center;
+    font-weight: 600;
+    font-size: 50px;
+}
+.numeros:nth-child(7){
+    color:#C5fB01;
+}
+#caixa-botoes{
+    text-align: center;
+    margin-top: 20px;
+}
+.meu-botao{
+    color: #C5fB01;
+    padding: 6px 16px;
+    background: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#Start{
+    color: #C5fB01;
+}
+#stop{
+    color: red;
+}
+#reset{
+    color: black;
+}
+.ativo{
+    opacity: 0.5;
+}
+ @media (max-width:500px){
+
+    body {
+       height: 100vw; 
+       width: 100vh;   
+ }
+
+ #minha-imagem{
+    margin-top: 40px;
+  
+ }
+#caixa-numeros{
+    margin: left 72px; 
+ 
+}
+#caixa-botoes{
+    margin-left: 86px;
+  
+
+}
+
+}
